@@ -1,18 +1,19 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>com.github</groupId>
-  <artifactId>egitdemo</artifactId>
-  <packaging>jar</packaging>
-  <version>1.0-SNAPSHOT</version>
-  <name>egitdemo</name>
-  <url>http://maven.apache.org</url>
-  <dependencies>
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>3.8.1</version>
-      <scope>test</scope>
-    </dependency>
-  </dependencies>
-</project>
+import java.sql.*; 
+import groovy.sql.Sql 
+
+class Example {
+   static void main(String[] args) {
+      // Creating a connection to the database
+      def sql = Sql.newInstance('sql12.freesqldatabase.com', 
+         'sql12274527', 'g3wrb4mQsg', 'com.mysql.jdbc.Driver')
+			
+      // Executing the query SELECT VERSION which gets the version of the database
+      // Also using the eachROW method to fetch the result from the database
+   
+      sql.eachRow('SELECT VERSION()'){ row ->
+         println row[0]
+      }
+		
+      sql.close()  
+   } 
+} 
