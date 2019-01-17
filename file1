@@ -1,19 +1,7 @@
-import java.sql.*; 
-import groovy.sql.Sql 
-
-class Example {
-   static void main(String[] args) {
-      // Creating a connection to the database
-      def sql = Sql.newInstance('sql12.freesqldatabase.com', 
-         'sql12274527', 'g3wrb4mQsg', 'com.mysql.jdbc.Driver')
-			
-      // Executing the query SELECT VERSION which gets the version of the database
-      // Also using the eachROW method to fetch the result from the database
-   
-      sql.eachRow('SELECT VERSION()'){ row ->
-         println row[0]
-      }
-		
-      sql.close()  
-   } 
-} 
+create table sql12274527.table1(
+   tutorial_id INT NOT NULL,
+   tutorial_title VARCHAR(100) NOT NULL,
+   tutorial_author VARCHAR(40) NOT NULL,
+   submission_date DATE,
+   PRIMARY KEY ( tutorial_id )
+);
